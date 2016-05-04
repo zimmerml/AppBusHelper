@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- schema file for OpenTOSCA-ApplicationInvoker. -->
+<xs:schema targetNamespace="http://www.uni-stuttgart.de/opentosca"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	xmlns="http://www.uni-stuttgart.de/opentosca" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12">
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"
+		schemaLocation="http://www.w3.org/2001/xml.xsd" />
+	<xs:import namespace="http://docs.oasis-open.org/tosca/ns/2011/12"
+		schemaLocation="TOSCA-v1.0.xsd" />
+
+	<xs:element name="ApplicationInterfaces">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Interface" type="tosca:tInterface"
+					maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ApplicationInterfacesProperties">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ApplicationInterfaceInformation"
+					maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="name" type="xs:NCName" use="required" />
+						<xs:attribute name="class" type="xs:string" use="required" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
