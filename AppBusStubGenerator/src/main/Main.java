@@ -72,7 +72,7 @@ public class Main {
 			// Generate source classes
 			Generator.run(map, genClientStub);
 
-			// Compile generated source classes (only for clieant stub)
+			// Compile generated source classes (only for client stub)
 			if (genClientStub) {
 				Compiler.run();
 			}
@@ -86,7 +86,11 @@ public class Main {
 				}
 
 				// Select location and name of jar(s)
-				chooser.setSelectedFile(new File(nodeTemplateID + ".jar"));
+				String ending = "_Skeleton";
+				if (genClientStub) {
+					ending = "_Stub";
+				}
+				chooser.setSelectedFile(new File(nodeTemplateID + ending + ".jar"));
 				returnValue = chooser.showSaveDialog(null);
 
 				if (returnValue == JFileChooser.APPROVE_OPTION) {
@@ -121,8 +125,8 @@ public class Main {
 
 		cleanStubButton.setSelected(true);
 
-		int selected = JOptionPane.showOptionDialog(null, panel, "What should be generated?",
-				JOptionPane.PLAIN_MESSAGE, JOptionPane.QUESTION_MESSAGE, null, null, null);
+		int selected = JOptionPane.showOptionDialog(null, panel, "What should be generated?", JOptionPane.PLAIN_MESSAGE,
+				JOptionPane.QUESTION_MESSAGE, null, null, null);
 
 		if (selected != 0) {
 			System.out.println("Stub Generator stopped!");
