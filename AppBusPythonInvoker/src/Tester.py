@@ -4,7 +4,7 @@ Created on 12.05.2016
 @author: Michael Zimmermann
 '''
 
-import AppBusInvoker
+import AppBusPythonInvoker
 
 #
 nodeInstanceID = 4
@@ -19,6 +19,6 @@ params = {}
 
 
 
-result = AppBusInvoker.invoke(nodeInstanceID, serviceInstanceID, nodeTemplateID, interface, operation, params)
+result = AppBusPythonInvoker.invoke(nodeInstanceID, serviceInstanceID, nodeTemplateID, interface, operation, params)
 
 print(result)
