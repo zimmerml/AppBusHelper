@@ -130,7 +130,7 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                     print("Invocation finished!")
    
                    
-                    self.send_response(303)
+                    self.send_response(200)
                    
                     location = self.address_string() + ":" + str(port) + invoker_path + "/activeRequests/" + str(requestID) + "/response"
                     
@@ -180,12 +180,17 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                     
                     result = results.get(requestID)
                     
+                    
+                    print("Result: ", result)
+                    
                     answer = {'result': result}
         
-        
-                    self.send_header('Content-Type', "application/json")
-                    self.wfile.write(bytes(json.dumps(answer), "utf-8"))
+                
                     self.send_response(200) 
+                    self.send_header('Content-Type', "application/json")
+                    self.end_headers()
+                    self.wfile.write(bytes(json.dumps(answer), "utf-8"))
+                    
                 
                 elif requestID not in queue:  
                     
