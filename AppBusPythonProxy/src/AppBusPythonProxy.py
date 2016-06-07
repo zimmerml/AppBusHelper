@@ -72,11 +72,8 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
             # result = os.system(script)
             
             print("RESULT: ", result)
-            
-           
-            # Send response status code
-            self.send_response(202)
-                 
+
+   
             nextID = next(cont)
             
             results[nextID] = result
@@ -84,10 +81,14 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
             queue[nextID] = True       
             
             location = self.address_string() + ":" + str(port) + invoker_path + "/activeRequests/" + str(nextID)
- 
+            
+            # send response code
+            self.send_response(202)
             # Send headers
-            self.send_header('Location', location)
+            self.send_header("Location", location)
+            self.send_header("Content-Length", 0)
             self.end_headers()
+            
 
 
         else:
@@ -129,21 +130,16 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                 if queue[requestID]:
                     print("Invocation finished!")
    
-                   
-                    self.send_response(200)
-                   
                     location = self.address_string() + ":" + str(port) + invoker_path + "/activeRequests/" + str(requestID) + "/response"
                     
                     print(location)
       
+                    self.send_response(308)                                     
+                    self.send_header("Location", location)
+                    self.send_header("Content-Length", 0)
+                    self.end_headers()      
                    
-                    # self.send_response_only(303, "TEST")
-                                      
-                    self.send_header('Location', location)
-                    self.end_headers()
-      
-                    
-                    
+                                       
                                                     
                 else:
                     print("Invocation not finished yet!") 
