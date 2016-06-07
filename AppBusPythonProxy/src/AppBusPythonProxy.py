@@ -13,7 +13,7 @@ import importlib
 from difflib import Match
 
 
-port = 8081
+port = 9080
 invoker_path = "/OTABProxy/v1/appInvoker"
 
 queue_regex = "/activeRequests/([0-9]*)$"
@@ -30,6 +30,22 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
     # POST
     def do_POST(self):
         
+        # test
+        # print("1", self.address_string())
+        # print("2", self.parse_request())
+        # print("3", self.version_string())
+        # print("4", self.client_address)
+        # print("5", self.connection)
+        # print("6", self.default_request_version)
+        # print("7", self.headers)
+        # print("8", self.protocol_version)
+        # print("9", self.raw_requestline)
+        # print("10", self.request)
+        # print("11", self.request_version)
+        # print("12", self.requestline)
+        # print("13", self.server)
+        # print("14", self.server_version)
+        # test
         
         path = self.path
         
@@ -80,8 +96,9 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                            
             queue[nextID] = True       
             
-            location = invoker_path + "/activeRequests/" + str(nextID)
-            #location2 = self.address_string() + ":" + str(port) + invoker_path + "/activeRequests/" + str(nextID)
+            location = "http://" + self.address_string() + ":" + str(port) + invoker_path + "/activeRequests/" + str(nextID)
+            
+            print("polling location: ", location)
             
             # send response code
             self.send_response(202)
@@ -132,11 +149,9 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                     print("Invocation finished!")
    
    
-                    location = invoker_path + "/activeRequests/" + str(requestID) + "/response"
-                    #location2 = self.address_string() + ":" + str(port) + invoker_path + "/activeRequests/" + str(requestID) + "/response"
+                    location = "http://" + self.address_string() + ":" + str(port) + invoker_path + "/activeRequests/" + str(requestID) + "/response"
                                        
-                    print(location)
-                    #print(location2)
+                    print("result location: ", location)
       
                     self.send_response(303)                                     
                     self.send_header("Location", location)

@@ -7,15 +7,15 @@ Created on 12.05.2016
 import AppBusPythonInvoker
 
 #
-nodeInstanceID = 4
+nodeInstanceID = 1
 #or
 serviceInstanceID = None
 nodeTemplateID = None
 #
-interface = "NumberManipulatorApplicationInterface"
-operation = "reset"
-#params = {'name': 'Michael'}
-params = {}
+interface = "PythonTestInterface"
+operation = "helloWorld"
+params = {'name': 'Michael'}
+#params = {}
 
 
 
