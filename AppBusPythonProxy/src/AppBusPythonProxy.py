@@ -130,12 +130,14 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                 if queue[requestID]:
                     print("Invocation finished!")
    
-                    location = self.address_string() + ":" + str(port) + invoker_path + "/activeRequests/" + str(requestID) + "/response"
+                    #location = self.address_string() + ":" + str(port) + invoker_path + "/activeRequests/" + str(requestID) + "/response"
+                    location2 = invoker_path + "/activeRequests/" + str(requestID) + "/response"
                     
-                    print(location)
+                    #print(location)
+                    print(location2)
       
-                    self.send_response(308)                                     
-                    self.send_header("Location", location)
+                    self.send_response(303)                                     
+                    self.send_header("Location", location2)
                     self.send_header("Content-Length", 0)
                     self.end_headers()      
                    
