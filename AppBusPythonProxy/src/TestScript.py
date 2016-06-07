@@ -5,12 +5,21 @@ Created on 12.05.2016
 '''
 
     
-print("Hello World!")
 
 
 def helloWorld(name): 
 
     return("Hello World " + name)
+
+
+def reset():
+    print("RESET")
+
+
+
+def getNumber():
+    
+    return 42
 
 def add(number1, number2):
     
