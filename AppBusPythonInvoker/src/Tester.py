@@ -21,4 +21,5 @@ params = {'name': 'Michael'}
 
 result = AppBusPythonInvoker.invoke(nodeInstanceID, serviceInstanceID, nodeTemplateID, interface, operation, params)
 
+print("RESULT:")
 print(result)
