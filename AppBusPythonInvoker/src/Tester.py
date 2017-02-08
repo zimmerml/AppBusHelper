@@ -4,7 +4,7 @@ Created on 12.05.2016
 @author: Michael Zimmermann
 '''
 
-import AppBusPythonInvoker
+import AppBusClient
 
 #
 nodeInstanceID = 1
@@ -19,7 +19,7 @@ params = {'name': 'Michael'}
 
 
 
-result = AppBusPythonInvoker.invoke(nodeInstanceID, serviceInstanceID, nodeTemplateID, interface, operation, params)
+result = AppBusClient.invoke(nodeInstanceID, serviceInstanceID, nodeTemplateID, interface, operation, params)
 
 print("RESULT:")
 print(result)

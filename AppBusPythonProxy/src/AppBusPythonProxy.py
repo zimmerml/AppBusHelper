@@ -30,23 +30,6 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
     # POST
     def do_POST(self):
         
-        # test
-        # print("1", self.address_string())
-        # print("2", self.parse_request())
-        # print("3", self.version_string())
-        # print("4", self.client_address)
-        # print("5", self.connection)
-        # print("6", self.default_request_version)
-        # print("7", self.headers)
-        # print("8", self.protocol_version)
-        # print("9", self.raw_requestline)
-        # print("10", self.request)
-        # print("11", self.request_version)
-        # print("12", self.requestline)
-        # print("13", self.server)
-        # print("14", self.server_version)
-        # test
-        
         path = self.path
         
         print("Path: " + path)
